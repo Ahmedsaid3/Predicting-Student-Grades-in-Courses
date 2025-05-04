@@ -11,7 +11,31 @@ data_rmse = {
     "Term-7":   [1.0376, 0.9980, 1.0923, 0.9408, 1.0136],
 }
 
+a = 1
+sum = 0 
+print("weighted_average_rmse:")
 
+df = pd.DataFrame(data_rmse)
+kn_cf_values = df[df["Method"] == "KN-CF"].values[0][1:]  # skip the 'Method' column
+for i in kn_cf_values:
+    a += 1
+    if (a == 2):
+        sum += 9 * i
+    if (a == 3):
+        sum += 8 * i
+    if (a == 4):
+        sum += 7 * i
+    if (a == 5):
+        sum += 6 * i
+    if (a == 6):
+        sum += 8 * i
+    if (a == 7):
+        sum += 4 * i
+
+weighted_average_rmse = sum / 42
+print(weighted_average_rmse)
+
+'''
 df_rmse = pd.DataFrame(data_rmse)
 print(df_rmse)
 
@@ -61,6 +85,7 @@ print("Table saved as 'rmse_table_min_highlighted.png'")
 # plt.show()
 
 print("\n")
+'''
 # mae table 6 
 data_mae = {
     "Method": ["C-CF", "C-KM", "U-CF", "KN-CF", "Our-Model"],
@@ -72,6 +97,44 @@ data_mae = {
     "Term-7":   [0.7670, 0.7435, 0.8246, 0.7035, 0.8400],
 }
 
+a = 1
+sum = 0 
+print("weighted_average_mae:")
+
+df = pd.DataFrame(data_mae)
+kn_cf_values = df[df["Method"] == "KN-CF"].values[0][1:]  # skip the 'Method' column
+for i in kn_cf_values:
+    a += 1
+    if (a == 2):
+        sum += 9 * i
+    if (a == 3):
+        sum += 8 * i
+    if (a == 4):
+        sum += 7 * i
+    if (a == 5):
+        sum += 6 * i
+    if (a == 6):
+        sum += 8 * i
+    if (a == 7):
+        sum += 4 * i
+
+weighted_average_mae = sum / 42
+print(weighted_average_mae)
+
+import json
+# Your results
+results = {
+    "chinese educationalgraph": {
+        "WeightedAvgRMSE": 1.0032285714285714,
+        "WeightedAvgMAE": 0.7494047619047619
+    },
+}
+
+# Save to JSON file
+with open("chinese_educationalgraph.json", "w") as f:
+    json.dump(results, f, indent=4)
+
+'''
 df_mae = pd.DataFrame(data_mae)
 print(df_mae)
 
@@ -119,4 +182,4 @@ print("Table saved as 'mae_table_min_highlighted.png'")
 
 # Display the table
 # plt.show()
-
+'''
